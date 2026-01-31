@@ -94,7 +94,7 @@
                  <td class="px-4 py-3">{{ customer.lastActive }}</td>
                 <td class="px-4 py-3">
                   <div class="flex items-center justify-center gap-3">
-  <button class="text-blue-600 hover:text-blue-800">
+  <button @click="openModal('view', customer)" class="text-blue-600 hover:text-blue-800">
    <i class="fa-solid fa-user"></i>
   </button>
     <div class="h-3 border-l border-gray-500  mb-3 sm:mt-3"></div>
@@ -118,11 +118,11 @@
     <i class="bi bi-check-circle"></i>
   </button>
   <div class="h-3 border-l border-gray-500  mb-3 sm:mt-3"></div>
-  <button class="text-orange-500 hover:text-orange-700">
+  <button @click="openModal('edit', customer)" class="text-orange-500 hover:text-orange-700">
     <i class="bi bi-pencil text-md"></i>
   </button>
 <div class="h-3 border-l border-gray-500  mb-3 sm:mt-3"></div>
-  <button class="text-red-500 hover:text-gray-600">
+  <button @click="openModal('delete', customer)" class="text-red-500 hover:text-gray-600">
     <i class="bi bi-trash"></i>
   </button>
 </div>
@@ -145,12 +145,248 @@
       </div>
     </div>
 
+    <!-- View Member Modal -->
+    <transition name="fade">
+      <div
+        v-if="modalType === 'view' && selectedMember"
+        @click.self="closeModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      >
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div class="p-6 border-b border-slate-200 flex items-center justify-between">
+            <h3 class="text-xl font-bold text-slate-900">Member Details</h3>
+            <button @click="closeModal" class="w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <div class="p-6 space-y-4">
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 text-white text-2xl font-bold flex items-center justify-center">
+                {{ selectedMember.name.charAt(0) }}
+              </div>
+              <div>
+                <h4 class="text-xl font-bold text-slate-900">{{ selectedMember.name }}</h4>
+                <p class="text-slate-500">{{ selectedMember.role }}</p>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-semibold text-slate-500 uppercase mb-1 block">Phone</label>
+                <p class="text-slate-900 font-semibold">{{ selectedMember.phone }}</p>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-500 uppercase mb-1 block">Email</label>
+                <p class="text-slate-700">{{ selectedMember.email }}</p>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-500 uppercase mb-1 block">Role</label>
+                <p class="text-slate-700">{{ selectedMember.role }}</p>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-500 uppercase mb-1 block">Status</label>
+                <span :class="['inline-block px-3 py-1 rounded-full text-xs font-semibold', getStatusClass(selectedMember.status)]">
+                  {{ selectedMember.status }}
+                </span>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-500 uppercase mb-1 block">Last Active</label>
+                <p class="text-slate-700">{{ selectedMember.lastActive }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 border-t border-slate-200 flex justify-end gap-3">
+            <button @click="closeModal" class="px-4 py-2 text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <!-- Suspend Member Modal -->
+    <transition name="fade">
+      <div
+        v-if="modalType === 'suspend' && selectedMember"
+        @click.self="closeModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      >
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+          <div class="p-6">
+            <div class="flex items-center justify-center w-12 h-12 mx-auto mb-4 bg-orange-100 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-orange-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 text-center mb-2">Suspend Member</h3>
+            <p class="text-slate-600 text-center mb-6">
+              Are you sure you want to suspend <strong>{{ selectedMember.name }}</strong>? They will lose access to the system.
+            </p>
+            <div class="mb-4">
+              <label class="text-xs font-semibold text-slate-600 mb-1 block">Reason (Optional)</label>
+              <textarea
+                v-model="suspendReason"
+                rows="3"
+                placeholder="Enter reason for suspension..."
+                class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 resize-none"
+              ></textarea>
+            </div>
+            <div class="flex gap-3">
+              <button @click="closeModal" class="flex-1 px-4 py-2 text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                Cancel
+              </button>
+              <button @click="confirmSuspend" class="flex-1 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors">
+                Suspend
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <!-- Reactivate Member Modal -->
+    <transition name="fade">
+      <div
+        v-if="modalType === 'reactivate' && selectedMember"
+        @click.self="closeModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      >
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+          <div class="p-6">
+            <div class="flex items-center justify-center w-12 h-12 mx-auto mb-4 bg-green-100 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 text-center mb-2">Reactivate Member</h3>
+            <p class="text-slate-600 text-center mb-6">
+              Are you sure you want to reactivate <strong>{{ selectedMember.name }}</strong>? They will regain access to the system.
+            </p>
+            <div class="flex gap-3">
+              <button @click="closeModal" class="flex-1 px-4 py-2 text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                Cancel
+              </button>
+              <button @click="confirmReactivate" class="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                Reactivate
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    <!-- Edit Member Modal -->
+    <transition name="fade">
+      <div
+        v-if="modalType === 'edit' && selectedMember"
+        @click.self="closeModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      >
+        <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div class="p-6 border-b border-slate-200 flex items-center justify-between">
+            <h3 class="text-xl font-bold text-slate-900">Edit Member</h3>
+            <button @click="closeModal" class="w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <form @submit.prevent="saveMember" class="p-6 space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="text-xs font-semibold text-slate-600 mb-1 block">Name</label>
+                <input v-model="editForm.name" type="text" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-600 mb-1 block">Phone</label>
+                <input v-model="editForm.phone" type="text" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-600 mb-1 block">Email</label>
+                <input v-model="editForm.email" type="email" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-600 mb-1 block">Role</label>
+                <select v-model="editForm.role" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option>Admin</option>
+                  <option>Manager</option>
+                  <option>User</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-slate-600 mb-1 block">Status</label>
+                <select v-model="editForm.status" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option>Active</option>
+                  <option>Invited</option>
+                  <option>Suspended</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex justify-end gap-3 pt-4 border-t border-slate-200">
+              <button type="button" @click="closeModal" class="px-4 py-2 text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                Cancel
+              </button>
+              <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </transition>
+
+    <!-- Delete Member Modal -->
+    <transition name="fade">
+      <div
+        v-if="modalType === 'delete' && selectedMember"
+        @click.self="closeModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      >
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+          <div class="p-6">
+            <div class="flex items-center justify-center w-12 h-12 mx-auto mb-4 bg-red-100 rounded-full">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 6h18"></path>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 text-center mb-2">Delete Member</h3>
+            <p class="text-slate-600 text-center mb-6">
+              Are you sure you want to delete <strong>{{ selectedMember.name }}</strong>? This action cannot be undone and all their data will be permanently removed.
+            </p>
+            <div class="flex gap-3">
+              <button @click="closeModal" class="flex-1 px-4 py-2 text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+                Cancel
+              </button>
+              <button @click="confirmDelete" class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
 </template>
 
 <script setup>
 import { ref } from 'vue';
 
 const statuses = ['Active', 'Invited', 'Suspended'];
+const modalType = ref(null);
+const selectedMember = ref(null);
+const suspendReason = ref('');
+const editForm = ref({
+  name: '',
+  phone: '',
+  email: '',
+  role: '',
+  status: ''
+});
 
 const getStatusClass = (status) => {
   if (status === 'Active') return 'bg-green-100 text-green-800';
@@ -159,10 +395,62 @@ const getStatusClass = (status) => {
   return 'bg-gray-100 text-gray-800';
 };
 
-const openModal = (action, customer) => {
-  // Placeholder for modal logic
-  alert(`${action} ${customer.name}?`);
-};
+function openModal(action, customer) {
+  modalType.value = action;
+  selectedMember.value = customer;
+  suspendReason.value = '';
+  if (action === 'edit') {
+    editForm.value = {
+      name: customer.name,
+      phone: customer.phone,
+      email: customer.email,
+      role: customer.role,
+      status: customer.status
+    };
+  }
+}
+
+function closeModal() {
+  modalType.value = null;
+  selectedMember.value = null;
+  suspendReason.value = '';
+}
+
+function confirmSuspend() {
+  const index = customers.value.findIndex(c => c.name === selectedMember.value.name);
+  if (index !== -1) {
+    customers.value[index].status = 'Suspended';
+  }
+  closeModal();
+  alert(`Member ${selectedMember.value.name} has been suspended.${suspendReason.value ? ` Reason: ${suspendReason.value}` : ''}`);
+}
+
+function confirmReactivate() {
+  const index = customers.value.findIndex(c => c.name === selectedMember.value.name);
+  if (index !== -1) {
+    customers.value[index].status = 'Active';
+  }
+  closeModal();
+  alert(`Member ${selectedMember.value.name} has been reactivated.`);
+}
+
+function saveMember() {
+  const index = customers.value.findIndex(c => c.name === selectedMember.value.name);
+  if (index !== -1) {
+    customers.value[index] = { ...customers.value[index], ...editForm.value };
+  }
+  closeModal();
+  alert('Member updated successfully!');
+}
+
+function confirmDelete() {
+  const index = customers.value.findIndex(c => c.name === selectedMember.value.name);
+  if (index !== -1) {
+    customers.value.splice(index, 1);
+  }
+  closeModal();
+  alert('Member deleted successfully!');
+}
 
 const customers = ref([
   {

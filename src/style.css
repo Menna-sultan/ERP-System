@@ -18,6 +18,9 @@
   --chart-gradient-end: 217 91% 95%;
 }
 
+body {
+  background-color: #F9FBFA;
+}
 
 .bg-muted { background-color: var(--muted) ; }
 
@@ -25,3 +28,5 @@
 .text-muted-foreground { color: var(--muted-foreground) ; }
 .hover\:bg-muted:hover { background-color: var(--muted) ; }
 .placeholder\:text-muted-foreground::placeholder { color: var(--muted-foreground) ; }
+
+

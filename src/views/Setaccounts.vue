@@ -86,6 +86,10 @@
 
 
     <!-- Table Section -->
+    <!-- Loading -->
+    <div v-if="loading" class="text-center py-6 text-gray-400 dark:text-gray-300">
+        Loading...
+    </div>
     <div class="overflow-x-auto">
       <table class="w-full text-left border-collapse">
         <thead>

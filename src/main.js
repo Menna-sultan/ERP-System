@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import { createPinia } from "pinia";
 import { createRouter, createWebHistory } from "vue-router";
 import App from "./App.vue";
 import DashboardLayout from "./components/DashboardLayout.vue";
@@ -14,6 +15,7 @@ import taskes from "./components/taskes.vue";
 import Finance from "./components/Finance.vue";
 import Accounting from "./components/Accounting.vue";
 import Message from "./components/Message.vue";
+import Reports from "./components/Reports.vue";
 import ViewArchive from "./components/ViewArchive.vue"
 import AccountSettings from "./components/Account Settings.vue";
 import Members from "./components/Members.vue";
@@ -84,6 +86,12 @@ path: "/Addproject",
       path: "/Message",
         name: "Message",
         component: Message,
+
+      },
+      {
+      path: "/Reports",
+        name: "Reports",
+        component: Reports,
 
       },
       
@@ -174,6 +182,8 @@ const publicRoutes = ["login"];
 // });
 
 const app = createApp(App);
+const pinia = createPinia();
+app.use(pinia);
 app.use(router);
 window.Chart = Chart;
 app.mount("#app");

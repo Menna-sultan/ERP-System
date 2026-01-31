@@ -209,6 +209,236 @@
                   ></span>
                 </button>
               </div>
+
+              <!-- Section: Social Media & Online Presence -->
+              <div
+                class="md:col-span-2 lg:col-span-3 pb-4 border-b border-slate-100 mb-2 mt-4 flex items-center gap-2"
+              >
+                <i class="fas fa-share-alt text-blue-500 text-lg"></i>
+                <h3 class="text-lg font-bold text-slate-800">Social Media & Online Presence</h3>
+              </div>
+
+              <FormInput
+                label="Website"
+                v-model="formData.website"
+                type="url"
+                icon="fas fa-globe"
+                placeholder="https://www.example.com"
+              />
+
+              <FormInput
+                label="LinkedIn"
+                v-model="formData.linkedin"
+                icon="fab fa-linkedin"
+                placeholder="linkedin.com/in/username"
+              />
+
+              <FormInput
+                label="Twitter/X"
+                v-model="formData.twitter"
+                icon="fab fa-twitter"
+                placeholder="@username"
+              />
+
+              <FormInput
+                label="Facebook"
+                v-model="formData.facebook"
+                icon="fab fa-facebook"
+                placeholder="facebook.com/username"
+              />
+
+              <FormInput
+                label="Instagram"
+                v-model="formData.instagram"
+                icon="fab fa-instagram"
+                placeholder="@username"
+              />
+
+              <FormInput
+                label="WhatsApp"
+                v-model="formData.whatsapp"
+                icon="fab fa-whatsapp"
+                placeholder="+966XXXXXXXXX"
+              />
+
+              <!-- Section: Preferences & Settings -->
+              <div
+                class="md:col-span-2 lg:col-span-3 pb-4 border-b border-slate-100 mb-2 mt-4 flex items-center gap-2"
+              >
+                <i class="fas fa-cog text-blue-500 text-lg"></i>
+                <h3 class="text-lg font-bold text-slate-800">Preferences & Settings</h3>
+              </div>
+
+              <FormSelect
+                label="Preferred Language"
+                v-model="formData.preferredLanguage"
+                :options="[
+                  { label: 'Arabic', value: 'ar' },
+                  { label: 'English', value: 'en' },
+                  { label: 'Both', value: 'both' }
+                ]"
+              />
+
+              <FormSelect
+                label="Preferred Contact Method"
+                v-model="formData.preferredContact"
+                :options="[
+                  { label: 'Email', value: 'email' },
+                  { label: 'Phone', value: 'phone' },
+                  { label: 'SMS', value: 'sms' },
+                  { label: 'WhatsApp', value: 'whatsapp' }
+                ]"
+              />
+
+              <FormSelect
+                label="Communication Time"
+                v-model="formData.communicationTime"
+                :options="[
+                  { label: 'Morning (9 AM - 12 PM)', value: 'morning' },
+                  { label: 'Afternoon (12 PM - 5 PM)', value: 'afternoon' },
+                  { label: 'Evening (5 PM - 9 PM)', value: 'evening' },
+                  { label: 'Any Time', value: 'anytime' }
+                ]"
+              />
+
+              <FormSelect
+                label="Customer Segment"
+                v-model="formData.customerSegment"
+                :options="[
+                  { label: 'VIP', value: 'vip' },
+                  { label: 'Premium', value: 'premium' },
+                  { label: 'Standard', value: 'standard' },
+                  { label: 'New', value: 'new' }
+                ]"
+              />
+
+              <FormInput
+                label="Credit Limit"
+                type="number"
+                v-model="formData.creditLimit"
+                icon="fas fa-dollar-sign"
+                placeholder="0.00"
+              />
+
+              <FormInput
+                label="Discount Percentage"
+                type="number"
+                v-model="formData.discountPercentage"
+                icon="fas fa-percent"
+                placeholder="0"
+              />
+
+              <!-- Section: Additional Information -->
+              <div
+                class="md:col-span-2 lg:col-span-3 pb-4 border-b border-slate-100 mb-2 mt-4 flex items-center gap-2"
+              >
+                <i class="fas fa-info-circle text-blue-500 text-lg"></i>
+                <h3 class="text-lg font-bold text-slate-800">Additional Information</h3>
+              </div>
+
+              <div class="md:col-span-2 lg:col-span-3">
+                <label class="text-sm font-semibold text-slate-700 flex items-center gap-1 mb-2">
+                  Notes & Comments
+                </label>
+                <textarea
+                  v-model="formData.notes"
+                  rows="4"
+                  placeholder="Add any additional notes or comments about this customer..."
+                  class="w-full py-2.5 px-4 bg-white border border-slate-200 rounded-lg transition-all outline-none
+                         focus:border-blue-500 focus:ring-4 focus:ring-blue-50/50
+                         placeholder:text-slate-400 text-slate-700 resize-none"
+                ></textarea>
+              </div>
+
+              <div class="md:col-span-2 lg:col-span-3">
+                <label class="text-sm font-semibold text-slate-700 flex items-center gap-1 mb-2">
+                  Tags
+                </label>
+                <div class="flex flex-wrap gap-2 mb-2">
+                  <span
+                    v-for="tag in formData.tags"
+                    :key="tag"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold"
+                  >
+                    {{ tag }}
+                    <button
+                      type="button"
+                      @click="removeTag(tag)"
+                      class="hover:text-blue-900"
+                    >
+                      <i class="fas fa-times text-xs"></i>
+                    </button>
+                  </span>
+                </div>
+                <div class="flex gap-2">
+                  <input
+                    v-model="newTag"
+                    @keyup.enter="addTag"
+                    type="text"
+                    placeholder="Add tag and press Enter"
+                    class="flex-1 py-2.5 px-4 bg-white border border-slate-200 rounded-lg transition-all outline-none
+                           focus:border-blue-500 focus:ring-4 focus:ring-blue-50/50
+                           placeholder:text-slate-400 text-slate-700"
+                  />
+                  <button
+                    type="button"
+                    @click="addTag"
+                    class="px-4 py-2.5 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+
+              <FormInput
+                label="Referral Source"
+                v-model="formData.referralSource"
+                icon="fas fa-user-friends"
+                placeholder="How did they find us?"
+              />
+
+              <FormInput
+                label="Tax ID / VAT Number"
+                v-model="formData.taxId"
+                icon="fas fa-receipt"
+                placeholder="Enter tax identification number"
+              />
+
+              <FormInput
+                label="Registration Number"
+                v-model="formData.registrationNumber"
+                icon="fas fa-certificate"
+                placeholder="Commercial registration number"
+              />
+
+              <!-- Section: Emergency Contact -->
+              <div
+                class="md:col-span-2 lg:col-span-3 pb-4 border-b border-slate-100 mb-2 mt-4 flex items-center gap-2"
+              >
+                <i class="fas fa-phone-alt text-blue-500 text-lg"></i>
+                <h3 class="text-lg font-bold text-slate-800">Emergency Contact</h3>
+              </div>
+
+              <FormInput
+                label="Emergency Contact Name"
+                v-model="formData.emergencyContact.name"
+                icon="fas fa-user"
+                placeholder="Full name"
+              />
+
+              <FormInput
+                label="Emergency Contact Phone"
+                v-model="formData.emergencyContact.phone"
+                icon="fas fa-phone"
+                placeholder="05XXXXXXXX"
+              />
+
+              <FormInput
+                label="Emergency Contact Relationship"
+                v-model="formData.emergencyContact.relationship"
+                icon="fas fa-users"
+                placeholder="e.g., Spouse, Parent, Sibling"
+              />
             </div>
           </div>
 
@@ -240,7 +470,41 @@
               ]"
             >
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4 border-t border-slate-100">
-               
+                <FormInput
+                  label="Building Number"
+                  v-model="formData.nationalAddress.buildingNumber"
+                  icon="fas fa-building"
+                />
+
+                <FormInput
+                  label="Street"
+                  v-model="formData.nationalAddress.street"
+                  icon="fas fa-road"
+                />
+
+                <FormInput
+                  label="District"
+                  v-model="formData.nationalAddress.district"
+                  icon="fas fa-map-marker-alt"
+                />
+
+                <FormInput
+                  label="City"
+                  v-model="formData.nationalAddress.city"
+                  icon="fas fa-city"
+                />
+
+                <FormInput
+                  label="Postal Code"
+                  v-model="formData.nationalAddress.postalCode"
+                  icon="fas fa-mail-bulk"
+                />
+
+                <FormInput
+                  label="Additional Number"
+                  v-model="formData.nationalAddress.additionalNumber"
+                  icon="fas fa-hashtag"
+                />
               </div>
             </div>
           </div>
@@ -303,6 +567,28 @@ export default {
         workPlace: '',
         customerAccount: '',
         autoCreateAccount: false,
+        website: '',
+        linkedin: '',
+        twitter: '',
+        facebook: '',
+        instagram: '',
+        whatsapp: '',
+        preferredLanguage: '',
+        preferredContact: '',
+        communicationTime: '',
+        customerSegment: '',
+        creditLimit: '',
+        discountPercentage: '',
+        notes: '',
+        tags: [],
+        referralSource: '',
+        taxId: '',
+        registrationNumber: '',
+        emergencyContact: {
+          name: '',
+          phone: '',
+          relationship: ''
+        },
         nationalAddress: {
           buildingNumber: '',
           street: '',
@@ -312,6 +598,7 @@ export default {
           additionalNumber: '',
         },
       },
+      newTag: '',
       isAddressOpen: false,
       isTranslating: false,
       showSuccess: false,
@@ -341,6 +628,28 @@ export default {
         workPlace: '',
         customerAccount: '',
         autoCreateAccount: false,
+        website: '',
+        linkedin: '',
+        twitter: '',
+        facebook: '',
+        instagram: '',
+        whatsapp: '',
+        preferredLanguage: '',
+        preferredContact: '',
+        communicationTime: '',
+        customerSegment: '',
+        creditLimit: '',
+        discountPercentage: '',
+        notes: '',
+        tags: [],
+        referralSource: '',
+        taxId: '',
+        registrationNumber: '',
+        emergencyContact: {
+          name: '',
+          phone: '',
+          relationship: ''
+        },
         nationalAddress: {
           buildingNumber: '',
           street: '',
@@ -351,6 +660,17 @@ export default {
         },
       };
       this.errors = {};
+      this.newTag = '';
+      this.newTag = '';
+    },
+    addTag() {
+      if (this.newTag && !this.formData.tags.includes(this.newTag)) {
+        this.formData.tags.push(this.newTag.trim());
+        this.newTag = '';
+      }
+    },
+    removeTag(tag) {
+      this.formData.tags = this.formData.tags.filter(t => t !== tag);
     },
     autoFillFields() {
       // Auto-fill nationality based on ID number patterns

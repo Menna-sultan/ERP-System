@@ -1,7 +1,7 @@
 <template>
 <div>
   <main class="flex-1 transition-all duration-300 ease-in-out ">
-        <div class="p-8 -mt-8">
+        <div class="p-8 ">
   
   <!-- <header class="fixed top-0 left-64 right-0 flex items-center justify-between bg-white py-4 border-b border-slate-200 z-10">
      
@@ -28,7 +28,7 @@
 
           <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 ">
       <div>
-    <h1 class="text-2xl font-semibold text-slate-800 mt-4">Projects</h1>
+    <h1 class="text-2xl font-semibold text-slate-800 mt-4">Project management</h1>
     <p class="text-slate-500 mt-1">Manage and monitor all your projects</p>
   </div>
 
@@ -42,31 +42,21 @@
       </div>
     
 
-
-
-
-
-
-
-
-
-
-
-
 </div>
-<div class="border border-slate-100 shadow-sm rounded-2xl p-6 ">
+  
+<div class="bg-white rounded-xl shadow">
 
-
-<div class="animate-in fade-in slide-in-from-bottom-4 duration-500">
-  <div class="flex items-center justify-between mt-8">
-   <div class="flex items-center gap-4">
-    <div class="relative"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle>
+   <div class="flex items-center justify-between p-4 ">
+      <div class="relative" >
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle>
     </svg>
     <input placeholder="Search anything..." class="pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all w-64 shadow-sm" type="text">
   </div>
 
-</div> 
-  <div class="flex items-center gap-3">
+
+
+<div class="flex items-center gap-3 space-x-4 text-sm">
     <div class="relative">
     <button class="p-2.5 rounded-xl border transition-all flex items-center gap-2 bg-white border-slate-200 text-slate-600 hover:bg-slate-50">
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-funnel" aria-hidden="true"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"></path>
@@ -81,10 +71,13 @@
     </button>
   </div>
 </div>
-</div>
-<div class="bg-white rounded-2xl  overflow-hidden mt-8">
+   </div>
+
+<div class="bg-white rounded-xl rounded-xl shadow  overflow-hidden mt-8">
   <div class="overflow-x-auto">
     <table class="w-full text-left border-collapse">
+
+       <div class="bg-white rounded-xl shadow"></div>
       <thead>
         <tr class="bg-[#F2F4F7] text-slate-500 text-[10px] font-bold uppercase tracking-widest border-b border-slate-100">
           <th class="px-6 py-4">Profile</th>
@@ -238,7 +231,6 @@
             </div>
           </td>
         </tr>
-        <tr class="hover:bg-slate-50/80 transition-all group">
          
 <!-- <span class="text-sm font-bold text-slate-900">SEO Optimization</span>
             </div>
@@ -278,6 +270,9 @@
               </button>
             </div>
          -->
+                    <tr class="hover:bg-slate-50/80 transition-all group">
+
+
           <td class="px-6 py-4">
       
                 <div class="w-8 h-8 rounded-full bg-[#f4f7fc] flex items-center justify-center border border-gray-200 ">
@@ -285,6 +280,10 @@
               </div>
        
           </td>
+          
+          
+          
+          
           <td class="px-6 py-4">
             <span class="text-sm font-bold text-slate-900">ERP System</span>
           </td>
@@ -305,6 +304,12 @@
               <span class="text-[10px] text-slate-400 font-medium">Due: 2024-05-10</span>
             </div>
           </td>
+
+
+
+
+
+          
           <td class="px-6 py-4">
             <div class="flex items-center justify-center gap-2">
               <button @click="openModal" class="p-2 text-blue-500 hover:bg-indigo-50 rounded-lg transition-all">
@@ -323,16 +328,136 @@
               </button>
             </div>
           </td>
+
+ 
         </tr>
      
-           
+             <tr class="hover:bg-slate-50/80 transition-all group">
+
+
+          <td class="px-6 py-4">
+      
+                <div class="w-8 h-8 rounded-full bg-[#f4f7fc] flex items-center justify-center border border-gray-200 ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#bab8b8" d="M12 12a4 4 0 1 1 0-8a4 4 0 0 1 0 8m0 3c3.186 0 6.045.571 8 3.063V20H4v-1.937C5.955 15.57 8.814 15 12 15"/></svg> 
+              </div>
+       
+          </td>
+          
+          
+          
+          
+          <td class="px-6 py-4">
+            <span class="text-sm font-bold text-slate-900">ERP System</span>
+          </td>
+          <td class="px-6 py-4"><span class="text-sm text-slate-600 font-medium">PrimeTech</span></td>
+          <td class="px-6 py-4"><span class="text-[10px] font-bold px-2.5 py-1 rounded-lg uppercase bg-amber-50 text-amber-600 border border-amber-100">Medium</span></td>
+          <td class="px-6 py-4"><span class="text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter bg-emerald-100 text-emerald-700">Completed</span></td>
+          <td class="px-6 py-4 min-w-[140px]">
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between items-center text-[10px] font-bold text-slate-400"><span>100%</span></div>
+              <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                <div class="h-full transition-all duration-1000 ease-out bg-emerald-500" style="width: 100%;"></div>
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-4">
+            <div class="flex flex-col">
+              <span class="text-sm font-bold text-slate-900">$8,000</span>
+              <span class="text-[10px] text-slate-400 font-medium">Due: 2024-05-10</span>
+            </div>
+          </td>
+
+
+
+
+
+          
+          <td class="px-6 py-4">
+            <div class="flex items-center justify-center gap-2">
+              <button @click="openModal" class="p-2 text-blue-500 hover:bg-indigo-50 rounded-lg transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true">
+                  <path d="M15 3h6v6"></path>
+                  <path d="M10 14 21 3"></path>
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                </svg>
+              </button>
+              <button class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ellipsis" aria-hidden="true">
+                  <circle cx="12" cy="12" r="1"></circle>
+                  <circle cx="19" cy="12" r="1"></circle>
+                  <circle cx="5" cy="12" r="1"></circle>
+                </svg>
+              </button>
+            </div>
+          </td>
+</tr>
+       <tr class="hover:bg-slate-50/80 transition-all group">
+
+
+          <td class="px-6 py-4">
+      
+                <div class="w-8 h-8 rounded-full bg-[#f4f7fc] flex items-center justify-center border border-gray-200 ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#bab8b8" d="M12 12a4 4 0 1 1 0-8a4 4 0 0 1 0 8m0 3c3.186 0 6.045.571 8 3.063V20H4v-1.937C5.955 15.57 8.814 15 12 15"/></svg> 
+              </div>
+       
+          </td>
+          
+          
+          
+          
+          <td class="px-6 py-4">
+            <span class="text-sm font-bold text-slate-900">ERP System</span>
+          </td>
+          <td class="px-6 py-4"><span class="text-sm text-slate-600 font-medium">PrimeTech</span></td>
+          <td class="px-6 py-4"><span class="text-[10px] font-bold px-2.5 py-1 rounded-lg uppercase bg-amber-50 text-amber-600 border border-amber-100">Medium</span></td>
+          <td class="px-6 py-4"><span class="text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-tighter bg-emerald-100 text-emerald-700">Completed</span></td>
+          <td class="px-6 py-4 min-w-[140px]">
+            <div class="flex flex-col gap-1.5">
+              <div class="flex justify-between items-center text-[10px] font-bold text-slate-400"><span>100%</span></div>
+              <div class="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
+                <div class="h-full transition-all duration-1000 ease-out bg-emerald-500" style="width: 100%;"></div>
+              </div>
+            </div>
+          </td>
+          <td class="px-6 py-4">
+            <div class="flex flex-col">
+              <span class="text-sm font-bold text-slate-900">$8,000</span>
+              <span class="text-[10px] text-slate-400 font-medium">Due: 2024-05-10</span>
+            </div>
+          </td>
+
+
+
+
+
+          
+          <td class="px-6 py-4">
+            <div class="flex items-center justify-center gap-2">
+              <button @click="openModal" class="p-2 text-blue-500 hover:bg-indigo-50 rounded-lg transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link" aria-hidden="true">
+                  <path d="M15 3h6v6"></path>
+                  <path d="M10 14 21 3"></path>
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                </svg>
+              </button>
+              <button class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-ellipsis" aria-hidden="true">
+                  <circle cx="12" cy="12" r="1"></circle>
+                  <circle cx="19" cy="12" r="1"></circle>
+                  <circle cx="5" cy="12" r="1"></circle>
+                </svg>
+              </button>
+            </div>
+          </td>
+</tr>
+     
       </tbody>
     </table>
   </div>
   </div>
 </div>
 </div>
-        </div>
+        
   </main>
 
   <!-- Modal -->

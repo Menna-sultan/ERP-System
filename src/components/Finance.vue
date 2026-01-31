@@ -1,15 +1,13 @@
 <template>
-    
-<main class="flex-1 flex flex-col min-w-0 overflow-hidden">
-    
-    <!-- <header class="h-16 bg-white border-b border-slate-200 px-8 flex items-center justify-between shrink-0 z-20"><div class="flex items-center gap-4 flex-1 max-w-lg"><div class="relative flex-1"><span class="absolute left-3 top-1/2 -translate-y-1/2 text-[#131313]"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></span><input placeholder="Search transactions..." class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-transparent rounded-xl focus:bg-white focus:border-indigo-500 focus:outline-none transition-all text-sm" type="text" value=""></div></div><div class="flex items-center gap-6"><div class="h-6 w-px bg-slate-200"></div><div class="flex -space-x-2"><img class="w-8 h-8 rounded-full border-2 border-white ring-1 ring-slate-100 shadow-sm" alt="U1" src="https://picsum.photos/seed/u1/32/32"><img class="w-8 h-8 rounded-full border-2 border-white ring-1 ring-slate-100 shadow-sm" alt="U2" src="https://picsum.photos/seed/u2/32/32"><div class="w-8 h-8 rounded-full bg-slate-100 border-2 border-white ring-1 ring-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500 shadow-sm">+5</div></div></div></header> -->
-       <div class="px-8 pt-8 pb-12 overflow-y-auto custom-scrollbar flex-1 bg-slate-50/30">
-            <div class="flex items-center justify-between mb-8">
+  
+  <main class="flex-1 transition-all duration-300 ease-in-out ">
+        <div class="p-8 ">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 ">
                 <div>
-                    <h1 class="text-2xl font-bold text-slate-900 mb-1">Financial Overview</h1>
-                    <p class="text-sm text-slate-500 font-medium">Software Operations &amp; Billing Center</p>
+                    <h1 class="text-2xl font-semibold text-slate-800 mt-4">Financial Overview</h1>
+                    <p class="text-slate-500 mt-1">Software Operations &amp; Billing Center</p>
                 </div>
-                <div class="flex gap-3">
+                <div class="flex gap-8">
                     <button
                         class="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold shadow-sm hover:bg-slate-50 transition-all">Export
                         Report</button>
@@ -115,7 +113,7 @@
                             </div><span class="text-sm font-bold text-emerald-600">+$15,000</span>
                         </div>
                     </div><button
-                        class="w-full mt-10 py-3 border-2 border-dashed border-slate-200 rounded-xl text-xs font-bold text-[#131313] hover:border-indigo-300 hover:text-indigo-500 transition-all">View
+                        class="w-full mt-10 py-3 border-2 border-dashed border-slate-200 rounded-xl text-xs font-bold text-[#131313] hover:border-[#2B7FFF] hover:text-[#2B7FFF] transition-all">View
                         Billing Calendar</button>
                 </div>
             </div>
@@ -123,6 +121,10 @@
                 <div class="p-6 border-b border-slate-100 flex items-center justify-between">
                     <h4 class="font-bold text-slate-800">Recent Transactions</h4><button
                         class="text-xs font-bold text-[#2B7FFF] hover:underline">View Ledger</button>
+                </div>
+                <!-- Loading -->
+                <div v-if="loading" class="text-center py-6 text-gray-400 dark:text-gray-300">
+                    Loading...
                 </div>
                 <table class="w-full text-left">
                     <thead>

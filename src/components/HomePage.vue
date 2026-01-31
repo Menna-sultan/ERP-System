@@ -2,7 +2,7 @@
 <template>
 
 <main class="flex-1 transition-all duration-300 ease-in-out  ">
-        <div class="p-8 -mt-8">
+        <div class="p-8 ">
 
       <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 mt-2 gap-4">
       <div>
