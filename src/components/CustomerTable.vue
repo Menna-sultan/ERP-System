@@ -68,7 +68,7 @@
             <table class="w-full text-sm text-left">
               <thead class="bg-gray-50 text-gray-500">
                 <tr>
-                  <th class="px-6 py-3 text-left whitespace-nowrap">#</th>
+                  <th class="px-10 py-3 text-left whitespace-nowrap ">#</th>
                   <th class="px-6 py-3 text-left whitespace-nowrap">Name</th>
                   <th class="px-6 py-3 text-left whitespace-nowrap">Phone</th>
                   <th class="px-6 py-3 text-left whitespace-nowrap">Email</th>
@@ -98,22 +98,26 @@
                     </span>
                   </td>
                   <td class="px-6 py-4">
-                    <div class="flex items-center justify-center gap-3">
+                    <div class="flex items-center justify-center gap-2">
                       <button @click="openModal('view', customer)" 
                         class="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-colors"
                         aria-label="View customer">
                         <i class="fa-solid fa-user text-sm"></i>
                       </button>
+                        <div class="h-3 border-l border-gray-300 mb-3 sm:mt-3"></div>
+                        
                       <button @click="openModal('import', customer)"
                         class="p-2 text-green-600 hover:text-green-800 hover:bg-green-50 rounded-lg transition-colors"
                         aria-label="Import/Export">
                         <img class="h-4 w-4" src="/import-export (1).png" alt="Import Export">
                       </button>
+                        <div class="h-3 border-l border-gray-300 mb-3 sm:mt-3"></div>
                       <button @click="openModal('edit', customer)"
                         class="p-2 text-orange-500 hover:text-orange-700 hover:bg-orange-50 rounded-lg transition-colors"
                         aria-label="Edit customer">
                         <i class="bi bi-pencil text-sm"></i>
                       </button>
+                        <div class="h-3 border-l border-gray-300 mb-3 sm:mt-3"></div>
                       <button @click="openModal('delete', customer)"
                         class="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
                         aria-label="Delete customer">
@@ -318,7 +322,52 @@
         </div>
       </div>
     </transition>
-
+    <!-- Import/Export Modal -->
+    <transition name="fade">
+      <div
+        v-if="modalType === 'import' && selectedCustomer"
+        @click.self="closeModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      >
+        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+          <div class="p-6 border-b border-slate-200 flex items-center justify-between">
+            <h3 class="text-xl font-bold text-slate-900">Import/Export Customer Data</h3>
+            <button @click="closeModal" class="w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+          <div class="p-6 space-y-4">
+            <p class="text-slate-600">Choose an action for <strong>{{ selectedCustomer.name }}</strong></p>
+            <div class="space-y-3">
+              <button @click="exportCustomer" class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Export Customer Data
+              </button>
+              <button @click="importCustomer" class="w-full flex items-center justify-center gap-3 px-4 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="17 8 12 3 7 8"></polyline>
+                  <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                Import Customer Data
+              </button>
+            </div>
+          </div>
+          <div class="p-6 border-t border-slate-200 flex justify-end gap-3">
+            <button @click="closeModal" class="px-4 py-2 text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition>
     <!-- Edit Customer Modal -->
     <transition name="fade">
       <div v-if="modalType === 'edit' && selectedCustomer"
