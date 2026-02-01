@@ -616,6 +616,7 @@ const activities = ref([
 // Chart setup
 const chartRef = ref(null)
 let chartInstance = null
+let resizeObserver = null
 
 const data = [
   { name: 'JAN', revenue: 4000, expenses: 2400 },
@@ -737,23 +738,26 @@ const toggleMobileSearch = () => {
   showMobileSearch.value = !showMobileSearch.value
 }
 
-const resizeChart = () => {
-  if (chartInstance) {
-    chartInstance.resize()
-  }
-}
-
 onMounted(() => {
   if (chartRef.value) {
     chartInstance = echarts.init(chartRef.value)
     chartInstance.setOption(option)
-    window.addEventListener('resize', resizeChart)
+
+    // Use ResizeObserver instead of window resize for better container-specific resizing
+    resizeObserver = new ResizeObserver(() => {
+      if (chartInstance) {
+        chartInstance.resize()
+      }
+    })
+    resizeObserver.observe(chartRef.value)
   }
 })
 
 onBeforeUnmount(() => {
+  if (resizeObserver) {
+    resizeObserver.disconnect()
+  }
   if (chartInstance) {
-    window.removeEventListener('resize', resizeChart)
     chartInstance.dispose()
   }
 })
