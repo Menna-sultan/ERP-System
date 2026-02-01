@@ -1,6 +1,6 @@
 
 <template>
-   <main class="min-h-screen transition-all duration-300 ease-in-out bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+   <main class="min-h-screen transition-all duration-300 ease-in-out ">
         <div class="p-8">
             <div class="space-y-6">
                 <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
