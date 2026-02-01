@@ -65,7 +65,7 @@
                   <path fill="#48BB78"
                     d="M13.75 9a.75.75 0 0 1 .75-.75H18a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-1.69l-4.72 4.72a.75.75 0 0 1-1.06 0L9 13.06l-2.47 2.47a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0L12 13.94l4.19-4.19H14.5a.75.75 0 0 1-.75-.75" />
                 </svg>
-                <span class="text-[10px] sm:text-[11px] font-bold text-[#48BB78]">+12%</span>
+                <span class="text-[10px] sm:text-[11px] font-bold text-[#48BB78]">+12% since last month</span>
               </div>
             </div>
           </div>
@@ -131,7 +131,7 @@
                   <path fill="#48BB78"
                     d="M13.75 9a.75.75 0 0 1 .75-.75H18a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-1.69l-4.72 4.72a.75.75 0 0 1-1.06 0L9 13.06l-2.47 2.47a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0L12 13.94l4.19-4.19H14.5a.75.75 0 0 1-.75-.75" />
                 </svg>
-                <span class="text-[10px] sm:text-[11px] font-bold text-[#48BB78]">+10%</span>
+                <span class="text-[10px] sm:text-[11px] font-bold text-[#48BB78]">+10% since last month</span>
               </div>
             </div>
           </div>
@@ -199,7 +199,7 @@
                   <path fill="#48BB78"
                     d="M13.75 9a.75.75 0 0 1 .75-.75H18a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-1.69l-4.72 4.72a.75.75 0 0 1-1.06 0L9 13.06l-2.47 2.47a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0L12 13.94l4.19-4.19H14.5a.75.75 0 0 1-.75-.75" />
                 </svg>
-                <span class="text-[10px] sm:text-[11px] font-bold text-[#48BB78]">+6%</span>
+                <span class="text-[10px] sm:text-[11px] font-bold text-[#48BB78]">+6% since last month</span>
               </div>
             </div>
           </div>
@@ -230,14 +230,7 @@
           <div class="flex items-center justify-between mb-2">
             <div class="flex items-center gap-3">
               <div class="p-2 rounded-lg text-blue-600 bg-blue-50">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  class="lucide lucide-wallet">
-                  <path
-                    d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1">
-                  </path>
-                  <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
-                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 56 56"><path fill="currentColor" d="M46.847 8.448A6 6 0 0 1 47.052 10l-.001 6.001l.174.004A6 6 0 0 1 53 22v24a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6V22l.003-.205l.01-.18a6 6 0 0 1 4.436-6.167l32.05-11.243a6 6 0 0 1 7.348 4.243M47 20H9a2 2 0 0 0-1.995 1.851l-.005.15v24a2 2 0 0 0 1.85 1.994L9 48h38a2 2 0 0 0 1.995-1.85L49 46V22a2 2 0 0 0-1.85-1.994zM37 30a4 4 0 1 1 0 8a4 4 0 0 1 0-8m3.68-21.965l-.048.011L17.957 16h25.094v-6a2 2 0 0 0-.03-.347l-.038-.17a2 2 0 0 0-2.304-1.448"/></svg>
               </div>
               <h3 class="text-slate-800 font-semibold text-xs uppercase tracking-wider">Finance</h3>
             </div>
@@ -259,7 +252,7 @@
                   <path fill="#48BB78"
                     d="M13.75 9a.75.75 0 0 1 .75-.75H18a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-1.69l-4.72 4.72a.75.75 0 0 1-1.06 0L9 13.06l-2.47 2.47a.75.75 0 0 1-1.06-1.06l3-3a.75.75 0 0 1 1.06 0L12 13.94l4.19-4.19H14.5a.75.75 0 0 1-.75-.75" />
                 </svg>
-                <span class="text-[10px] sm:text-[11px] font-bold text-[#48BB78]">+6%</span>
+                <span class="text-[10px] sm:text-[11px] font-bold text-[#48BB78]">+6% since last month</span>
               </div>
             </div>
           </div>
