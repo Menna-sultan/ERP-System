@@ -662,7 +662,10 @@ const option = {
     },
     axisLabel: {
       color: '#6b7280',
-      fontSize: 12
+      fontSize: 12,
+      formatter: function (value) {
+        return '$' + (value / 1000).toFixed(1) + 'k';
+      }
     },
     splitLine: {
       lineStyle: {
