@@ -54,7 +54,7 @@
       </div>
 
       <!-- Table -->
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto hidden md:block">
         <table class="w-full text-sm text-left mt-7">
           <thead class="bg-gray-50 text-gray-500  ">
             <tr>
@@ -69,9 +69,9 @@
 
             </tr>
           </thead>
-          
-       
-         
+
+
+
             <tbody>
               <tr
                 v-for="(customer, index) in customers"
@@ -131,6 +131,77 @@
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <!-- Mobile Card Layout -->
+        <div class="md:hidden space-y-4 mt-7">
+          <div
+            v-for="(customer, index) in customers"
+            :key="index"
+            class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm"
+          >
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-[#f4f7fc] flex items-center justify-center border border-gray-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="#bab8b8" d="M12 12a4 4 0 1 1 0-8a4 4 0 0 1 0 8m0 3c3.186 0 6.045.571 8 3.063V20H4v-1.937C5.955 15.57 8.814 15 12 15"/></svg>
+                </div>
+                <span class="text-gray-900 font-medium">{{ customer.name }}</span>
+              </div>
+              <div class="flex gap-2">
+                <button @click="openModal('view', customer)" class="text-blue-600 hover:text-blue-800">
+                  <i class="fa-solid fa-user"></i>
+                </button>
+                <button
+                  v-if="customer.status !== 'Suspended'"
+                  @click="openModal('suspend', customer)"
+                  class="p-2 text-red-500 hover:bg-orange-100 rounded-lg"
+                  title="Suspend"
+                >
+                  <i class="bi bi-slash-circle"></i>
+                </button>
+                <button
+                  v-else
+                  @click="openModal('reactivate', customer)"
+                  class="p-2 text-green-500 hover:bg-green-100 rounded-lg"
+                  title="Reactivate"
+                >
+                  <i class="bi bi-check-circle"></i>
+                </button>
+                <button @click="openModal('edit', customer)" class="text-orange-500 hover:text-orange-700">
+                  <i class="bi bi-pencil text-md"></i>
+                </button>
+                <button @click="openModal('delete', customer)" class="text-red-500 hover:text-gray-600">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <div>
+                <label class="text-xs font-semibold text-gray-500 uppercase">Name</label>
+                <p class="text-gray-900 font-medium">{{ customer.name }}</p>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-gray-500 uppercase">Email</label>
+                <p class="text-gray-700">{{ customer.email }}</p>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-gray-500 uppercase">Status</label>
+                <span class="px-2 py-1 text-xs font-medium rounded-full" :class="getStatusClass(customer.status)">{{ customer.status }}</span>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-gray-500 uppercase">Phone</label>
+                <p class="text-gray-700">{{ customer.phone }}</p>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-gray-500 uppercase">Role</label>
+                <p class="text-gray-700">{{ customer.role }}</p>
+              </div>
+              <div>
+                <label class="text-xs font-semibold text-gray-500 uppercase">Created Date</label>
+                <p class="text-gray-700">{{ customer.lastActive }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
