@@ -1,21 +1,14 @@
 <template>
-  <main class="min-h-screen transition-all duration-300 ease-in-out bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+  <main class="min-h-screen transition-all duration-300 ease-in-out">
     <div class="p-8">
       <!-- Header -->
       <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
         <div>
           <div class="flex items-center gap-3 mb-2">
-            <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-lg shadow-blue-500/30">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 3v16a2 2 0 0 0 2 2h16"></path>
-                <path d="M18 17V9"></path>
-                <path d="M13 17V5"></path>
-                <path d="M8 17v-3"></path>
-              </svg>
-            </div>
-            <h1 class="text-3xl font-bold text-slate-900">Reports & Analytics</h1>
+           
+            <h1 class="text-xl sm:text-2xl font-semibold text-slate-800">Reports & Analytics</h1>
           </div>
-          <p class="text-slate-500 ml-15">Comprehensive insights and analytics for your business</p>
+          <p class="text-sm sm:text-base text-slate-500 mt-1">Comprehensive insights and analytics for your business</p>
         </div>
         <div class="flex items-center gap-3">
           <button class="flex items-center gap-2 px-4 py-2.5 bg-white text-slate-700 rounded-xl font-semibold shadow-sm border border-slate-200 hover:bg-slate-50 transition-all">
@@ -26,7 +19,7 @@
             </svg>
             Export
           </button>
-          <button class="flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-semibold shadow-lg shadow-blue-600/30 hover:from-blue-700 hover:to-indigo-700 transition-all">
+          <button class="flex items-center gap-2 px-5 py-2.5 bg-[#193560] text-white rounded-xl font-semibold shadow-sm  transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -36,53 +29,87 @@
         </div>
       </div>
 
+
+
+
+
+
+
+
+
+
       <!-- Filter Bar -->
       <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm mb-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div class="relative">
-            <label class="text-xs font-semibold text-slate-600 mb-1 block">Date Range</label>
-            <select class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 bg-white">
-              <option>Last 7 days</option>
-              <option>Last 30 days</option>
-              <option>Last 3 months</option>
-              <option>Last 6 months</option>
-              <option>Last year</option>
-              <option>Custom range</option>
-            </select>
-          </div>
-          <div class="relative">
-            <label class="text-xs font-semibold text-slate-600 mb-1 block">Report Type</label>
-            <select class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 bg-white">
-              <option>All Reports</option>
-              <option>Financial</option>
-              <option>Sales</option>
-              <option>Projects</option>
-              <option>Customers</option>
-              <option>Team Performance</option>
-            </select>
-          </div>
-          <div class="relative">
-            <label class="text-xs font-semibold text-slate-600 mb-1 block">Status</label>
-            <select class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 bg-white">
-              <option>All Status</option>
-              <option>Completed</option>
-              <option>Pending</option>
-              <option>Draft</option>
-            </select>
-          </div>
-          <div class="flex items-end">
-            <button class="w-full px-4 py-2.5 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-all">
-              Apply Filters
-            </button>
-          </div>
-        </div>
+  <div class="flex flex-col md:flex-row gap-4 items-end">
+    <!-- Search Box -->
+    <!-- <div class="flex-1 w-full md:w-auto">
+      <div class="relative">
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="Search tasks..."
+          class="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl text-sm
+                 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500"
+        />
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
       </div>
+    </div> -->
+
+    <!-- Date Range -->
+    <div class="flex-1 w-full md:w-auto">
+      <label class="text-xs font-semibold text-slate-600 mb-1 block">Date Range</label>
+      <select class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 bg-white">
+        <option>Last 7 days</option>
+        <option>Last 30 days</option>
+        <option>Last 3 months</option>
+        <option>Last 6 months</option>
+        <option>Last year</option>
+        <option>Custom range</option>
+      </select>
+    </div>
+
+    <!-- Report Type -->
+    <div class="flex-1 w-full md:w-auto">
+      <label class="text-xs font-semibold text-slate-600 mb-1 block">Report Type</label>
+      <select class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 bg-white">
+        <option>All Reports</option>
+        <option>Financial</option>
+        <option>Sales</option>
+        <option>Projects</option>
+        <option>Customers</option>
+        <option>Team Performance</option>
+      </select>
+    </div>
+
+    <!-- Status -->
+    <div class="flex-1 w-full md:w-auto">
+      <label class="text-xs font-semibold text-slate-600 mb-1 block">Status</label>
+      <select class="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 bg-white">
+        <option>All Status</option>
+        <option>Completed</option>
+        <option>Pending</option>
+        <option>Draft</option>
+      </select>
+    </div>
+
+    <!-- Apply Button (Optional) -->
+    <div class="w-full md:w-auto">
+      <button class="w-full px-4 py-2.5 border border-[#193560] text-[#193560] rounded-xl font-semibold hover:bg-[#193560] hover:text-white transition-all">
+        Apply Filters
+      </button>
+    </div>
+  </div>
+</div>
 
       <!-- Stats Cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
           <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/30">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
               </svg>
@@ -95,7 +122,7 @@
 
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
           <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/30">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 text-white flex items-center justify-center ">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                 <circle cx="9" cy="7" r="4"></circle>
@@ -111,7 +138,7 @@
 
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
           <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center shadow-lg shadow-amber-500/30">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-white flex items-center justify-center ">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 10.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12.5"></path>
                 <path d="m9 11 3 3L22 4"></path>
@@ -125,7 +152,7 @@
 
         <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
           <div class="flex items-center justify-between mb-4">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 text-white flex items-center justify-center shadow-lg shadow-purple-500/30">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 text-white flex items-center justify-center ">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
@@ -277,11 +304,11 @@ const quickActions = ref([
   },
   {
     id: 2,
-    title: 'Sales Report',
-    description: 'View sales analytics',
+    title: 'Team Performance',
+    description: 'Monitor team productivity and efficiency',
     iconBg: 'bg-emerald-100',
     iconColor: 'text-emerald-600',
-    iconPath: 'M3 3v16a2 2 0 0 0 2 2h16M18 17V9M13 17V5M8 17v-3'
+    iconPath: 'M17 20h5v-2a3 3 0 0 0-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 0 1 5.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 0 1 9.288 0M15 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0z'
   },
   {
     id: 3,
@@ -289,7 +316,7 @@ const quickActions = ref([
     description: 'Customer insights',
     iconBg: 'bg-purple-100',
     iconColor: 'text-purple-600',
-    iconPath: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75M9 7a4 4 0 1 1 8 0'
+    iconPath: 'M21 19.75c0-2.09-1.67-5.068-4-5.727m-2 5.727c0-2.651-2.686-6-6-6s-6 3.349-6 6m9-12.5a3 3 0 1 1-6 0a3 3 0 0 1 6 0m3 3a3 3 0 1 0 0-6'
   },
   {
     id: 4,
@@ -312,11 +339,11 @@ const templates = ref([
   },
   {
     id: 2,
-    title: 'Sales Performance',
-    description: 'Track sales metrics and KPIs',
+    title: 'Project Progress',
+    description: 'Track project milestones and timelines',
     iconBg: 'bg-emerald-100',
     iconColor: 'text-emerald-600',
-    iconPath: 'M3 3v16a2 2 0 0 0 2 2h16M18 17V9M13 17V5M8 17v-3'
+    iconPath: 'M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm0 0V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10m-6 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2m0 0V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z'
   },
   {
     id: 3,
@@ -324,7 +351,7 @@ const templates = ref([
     description: 'Deep dive into customer data',
     iconBg: 'bg-purple-100',
     iconColor: 'text-purple-600',
-    iconPath: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75M9 7a4 4 0 1 1 8 0'
+    iconPath: 'M21 19.75c0-2.09-1.67-5.068-4-5.727m-2 5.727c0-2.651-2.686-6-6-6s-6 3.349-6 6m9-12.5a3 3 0 1 1-6 0a3 3 0 0 1 6 0m3 3a3 3 0 1 0 0-6'
   }
 ]);
 </script>
